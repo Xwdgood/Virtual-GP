@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -189,9 +190,11 @@ export default function DoctorDetailPage() {
         {/* Doctor Avatar */}
         <div className="flex justify-center mb-6">
           <div className="w-48 h-48 bg-gray-100 rounded-lg overflow-hidden">
-            <img 
+            <Image 
               src={doctor.avatar} 
               alt={doctor.name}
+              width={192}
+              height={192}
               className="w-full h-full object-cover"
             />
           </div>

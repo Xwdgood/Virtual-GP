@@ -96,7 +96,8 @@ export default function ChatPage() {
     router.push(`/consultation-summary?messages=${messagesData}`);
   };
 
-  const toggleCamera = async () => {
+  // 移除未使用的摄像头功能
+  /* const _toggleCamera = async () => { // 暂时保留但标记为未使用
     if (isCameraOpen) {
       setIsCameraOpen(false);
       setIsVideoLoading(true);
@@ -185,7 +186,7 @@ export default function ChatPage() {
         setMessages(prev => [...prev, errorMsg]);
       }
     }
-  };
+  }; */
 
   const capturePhoto = () => {
     if (videoRef.current && videoRef.current.videoWidth > 0) {
@@ -282,7 +283,7 @@ export default function ChatPage() {
     };
 
     setMessages(prev => [...prev, userMessage]);
-    const currentInput = inputValue;
+    // const currentInput = inputValue; // 不再需要
     setInputValue("");
     setIsLoading(true);
 
@@ -445,9 +446,11 @@ export default function ChatPage() {
               }`}>
                 {message.imageData ? (
                   <div className="space-y-2">
-                    <img 
+                    <Image 
                       src={message.imageData} 
                       alt="Captured photo" 
+                      width={400}
+                      height={300}
                       className="max-w-full h-auto rounded-lg border border-gray-300"
                       style={{ maxHeight: '200px' }}
                     />

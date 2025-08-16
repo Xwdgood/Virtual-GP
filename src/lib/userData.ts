@@ -1,6 +1,6 @@
 // 用户数据管理系统
 
-import { MedicalReport, UserData, UsersDatabase } from '@/types/user';
+import { UserData, UsersDatabase } from '@/types/user';
 
 // 模拟数据库 - 在实际应用中这应该是真实的数据库
 const STORAGE_KEY = 'virtualgp_users_db';
@@ -161,7 +161,7 @@ export const createUser = (email: string, name?: string): UserData => {
 };
 
 // 验证用户登录
-export const loginUser = (email: string, password: string): boolean => {
+export const loginUser = (email: string, _password: string): boolean => {
   // 在实际应用中，这里应该验证密码
   // 现在简单地检查邮箱格式并创建/登录用户
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

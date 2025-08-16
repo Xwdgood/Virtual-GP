@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { getUserData, saveUserData } from "@/lib/userData";
 import { MedicalReport } from "@/types/user";
+import { ChatMessage } from "@/types/chat";
 
 interface ChatSummary {
   symptoms: string[];
@@ -12,7 +13,7 @@ interface ChatSummary {
   recentHistory: string[];
 }
 
-export default function ConsultationSummaryPage() {
+function ConsultationSummaryContent() {
   const [summary, setSummary] = useState<ChatSummary>({
     symptoms: [],
     recommendations: [],
@@ -33,9 +34,9 @@ export default function ConsultationSummaryPage() {
     const chatData = searchParams.get('messages');
     if (chatData) {
       try {
-        const messages = JSON.parse(decodeURIComponent(chatData));
+        const messages = JSON.parse(decodeURIComponent(chatData)) as ChatMessage[];
         // 过滤掉系统消息，只保留真实的用户和助手对话
-        const realMessages = messages.filter((msg: any) => 
+        const realMessages = messages.filter((msg: ChatMessage) => 
           msg.text && 
           msg.text.trim() !== "" && 
           msg.text !== "Hello, how can I assist you today?" // 过滤默认问候语
@@ -55,7 +56,7 @@ export default function ConsultationSummaryPage() {
     }
   }, [searchParams]);
 
-  const generateSummary = async (messages: any[]) => {
+  const generateSummary = async (_messages: ChatMessage[]) => {
     // 固定“大脑创伤”模板总结（替代 OpenAI 调用）
     const fixedSummary = {
       symptoms: [
@@ -77,31 +78,7 @@ export default function ConsultationSummaryPage() {
     setIsLoading(false);
   };
 
-  const generateFallbackSummary = (aiResponse: string) => {
-    // 如果AI返回的不是JSON，尝试从文本中提取信息
-    const fallbackData = {
-      symptoms: aiResponse.includes('symptom') ? ['Based on conversation analysis'] : [],
-      recommendations: aiResponse.includes('recommend') ? ['Please refer to the consultation details'] : [],
-      recentHistory: ['Chat consultation completed']
-    };
-    setSummary(fallbackData);
-    setEditableSummary(fallbackData);
-  };
-
-  const generateFallbackFromMessages = (messages: any[]) => {
-    // 从聊天记录中提取基本信息
-    const userMessages = messages.filter(msg => msg.sender === 'user').map(msg => msg.text);
-    const assistantMessages = messages.filter(msg => msg.sender === 'assistant').map(msg => msg.text);
-
-    const fallbackData = {
-      symptoms: userMessages.length > 0 ? [`Patient concerns: ${userMessages[0]}`] : ['No specific symptoms recorded'],
-      recommendations: assistantMessages.length > 0 ? [`Medical advice provided`] : ['Consultation completed'],
-      recentHistory: [`Consultation on ${new Date().toLocaleDateString()}`]
-    };
-
-    setSummary(fallbackData);
-    setEditableSummary(fallbackData);
-  };
+  // 移除未使用的 fallback 函数
 
   const showEmptyState = () => {
     // 显示空状态，提示用户没有足够的对话内容
@@ -384,5 +361,20 @@ export default function ConsultationSummaryPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ConsultationSummaryPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-white relative overflow-hidden w-full h-full flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[#84AE84] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#84AE84] font-medium">Loading consultation summary...</p>
+        </div>
+      </div>
+    }>
+      <ConsultationSummaryContent />
+    </Suspense>
   );
 }

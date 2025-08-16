@@ -75,10 +75,12 @@ export default function MedicalReportsPage() {
 
     // 保存到用户数据
     const userData = getUserData();
-    saveUserData({
-      ...userData,
-      medicalReports: newReports
-    });
+    if (userData) {
+      saveUserData({
+        ...userData,
+        medicalReports: newReports
+      });
+    }
 
     // 重置表单
     setTitle("");

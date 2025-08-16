@@ -16,54 +16,7 @@ const aucklandHospitals = [
   "Southern Cross Hospital, 90 Greenlane East, Remuera, Auckland 1051"
 ];
 
-// 医学专科领域
-const specialties = [
-  "General Practice",
-  "Internal Medicine", 
-  "Cardiology",
-  "Dermatology",
-  "Pediatrics",
-  "Orthopedics",
-  "Psychiatry",
-  "Neurology",
-  "Emergency Medicine",
-  "Family Medicine"
-];
-
-// 生成随机日期（未来7-30天内）
-const getRandomFutureDate = () => {
-  const today = new Date();
-  const daysToAdd = Math.floor(Math.random() * 23) + 7; // 7-30天
-  const futureDate = new Date(today);
-  futureDate.setDate(today.getDate() + daysToAdd);
-  return futureDate;
-};
-
-// 生成随机时间
-const getRandomTime = () => {
-  const hours = [9, 10, 11, 12, 14, 15, 16, 17, 18];
-  const minutes = ['00', '30'];
-  const hour = hours[Math.floor(Math.random() * hours.length)];
-  const minute = minutes[Math.floor(Math.random() * minutes.length)];
-  return `${hour}:${minute}`;
-};
-
-// 真实医生头像照片
-const maleAvatars = [
-  "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1574664609238-c63ed0463b8a?w=400&h=400&fit=crop&crop=face"
-];
-
-const femaleAvatars = [
-  "https://images.unsplash.com/photo-1594824947933-d0501ba2fe65?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1609021374168-3bf94e85e596?w=400&h=400&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400&fit=crop&crop=face"
-];
+// 移除未使用的变量和函数
 
 // 模拟医生数据库
 export const doctorsDatabase: Doctor[] = [
@@ -261,7 +214,7 @@ export const searchAndFilterDoctors = (query: string, filters: DoctorFilters): D
   // 时间段过滤
   if (filters.timeSlot && filters.timeSlot !== 'all') {
     filteredDoctors = filteredDoctors.filter(doctor => 
-      doctor.availableTimeSlots.includes(filters.timeSlot as any) ||
+      doctor.availableTimeSlots.includes(filters.timeSlot as 'morning' | 'afternoon' | 'allday') ||
       doctor.availableTimeSlots.includes('allday')
     );
   }

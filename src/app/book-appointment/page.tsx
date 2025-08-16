@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -78,7 +79,7 @@ export default function BookAppointmentPage() {
     alert(`More details for doctor ID: ${doctorId}`);
   };
 
-  const handleBookAppointment = (doctorId: string, doctorName: string) => {
+  const handleBookAppointment = (doctorId: string) => {
     router.push(`/doctor-detail/${doctorId}`);
   };
 
@@ -233,7 +234,7 @@ export default function BookAppointmentPage() {
                         key={gender}
                         size="sm"
                         variant={tempFilters.gender === gender ? 'default' : 'outline'}
-                        onClick={() => setTempFilters(prev => ({ ...prev, gender: gender as any }))}
+                        onClick={() => setTempFilters(prev => ({ ...prev, gender: gender as 'all' | 'male' | 'female' }))}
                         className={tempFilters.gender === gender ? 'bg-[#84AE84] hover:bg-[#84AE84]/90' : ''}
                       >
                         {gender === 'all' ? 'All' : gender.charAt(0).toUpperCase() + gender.slice(1)}
@@ -291,7 +292,7 @@ export default function BookAppointmentPage() {
                         key={timeSlot}
                         size="sm"
                         variant={tempFilters.timeSlot === timeSlot ? 'default' : 'outline'}
-                        onClick={() => setTempFilters(prev => ({ ...prev, timeSlot: timeSlot as any }))}
+                        onClick={() => setTempFilters(prev => ({ ...prev, timeSlot: timeSlot as 'all' | 'morning' | 'afternoon' | 'allday' }))}
                         className={tempFilters.timeSlot === timeSlot ? 'bg-[#84AE84] hover:bg-[#84AE84]/90' : ''}
                       >
                         {timeSlot === 'all' ? 'All' : getTimeSlotLabel(timeSlot)}
@@ -344,18 +345,20 @@ export default function BookAppointmentPage() {
                               <Card 
                   key={doctor.id} 
                   className="bg-white shadow-lg border-none rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-shadow"
-                  onClick={() => handleBookAppointment(doctor.id, doctor.name)}
+                  onClick={() => handleBookAppointment(doctor.id)}
                 >
                 <CardContent className="p-0">
                   {/* Doctor Header */}
                   <div className="bg-[#84AE84] p-4 text-white relative">
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 bg-white/20 rounded-full overflow-hidden">
-                        <img 
-                          src={doctor.avatar} 
-                          alt={doctor.name}
-                          className="w-full h-full object-cover"
-                        />
+                                              <Image 
+                        src={doctor.avatar} 
+                        alt={doctor.name}
+                        width={64}
+                        height={64}
+                        className="w-full h-full object-cover"
+                      />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-bold">{doctor.name}</h3>
@@ -428,7 +431,7 @@ export default function BookAppointmentPage() {
                       <Button
                         onClick={(e) => {
                           e.stopPropagation();
-                          handleBookAppointment(doctor.id, doctor.name);
+                          handleBookAppointment(doctor.id);
                         }}
                         className="flex-1 bg-[#84AE84] hover:bg-[#84AE84]/90 text-white"
                       >
