@@ -23,7 +23,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "1",
     name: "Dr. Jane Loe",
-    avatar: "https://randomuser.me/api/portraits/women/1.jpg",
+    avatar: "/images/doctors/doctor-woman-1.jpg",
     specialty: "General Practice",
     earliestAvailable: new Date("2025-08-16T18:00:00"),
     location: aucklandHospitals[0],
@@ -38,7 +38,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "2", 
     name: "Dr. John Doe",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    avatar: "/images/doctors/doctor-man-1.jpg",
     specialty: "Internal Medicine",
     earliestAvailable: new Date("2025-08-18T12:00:00"),
     location: aucklandHospitals[1],
@@ -53,7 +53,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "3",
     name: "Dr. Joanna Poe",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+    avatar: "/images/doctors/doctor-woman-2.jpg",
     specialty: "Cardiology",
     earliestAvailable: new Date("2025-08-20T14:30:00"),
     location: aucklandHospitals[2],
@@ -68,7 +68,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "4",
     name: "Dr. Michael Chen",
-    avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+    avatar: "/images/doctors/doctor-man-2.jpg",
     specialty: "Dermatology",
     earliestAvailable: new Date("2025-08-17T10:00:00"),
     location: aucklandHospitals[3],
@@ -83,7 +83,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "5",
     name: "Dr. Sarah Wilson",
-    avatar: "https://randomuser.me/api/portraits/women/3.jpg",
+    avatar: "/images/doctors/doctor-woman-3.jpg",
     specialty: "Pediatrics",
     earliestAvailable: new Date("2025-08-19T09:30:00"),
     location: aucklandHospitals[4],
@@ -98,7 +98,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "6",
     name: "Dr. Robert Taylor",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    avatar: "/images/doctors/doctor-man-3.jpg",
     specialty: "Orthopedics",
     earliestAvailable: new Date("2025-08-21T16:00:00"),
     location: aucklandHospitals[5],
@@ -113,7 +113,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "7",
     name: "Dr. Emily Brown",
-    avatar: "https://randomuser.me/api/portraits/women/4.jpg",
+    avatar: "/images/doctors/doctor-woman-4.jpg",
     specialty: "Psychiatry",
     earliestAvailable: new Date("2025-08-22T11:00:00"),
     location: aucklandHospitals[6],
@@ -128,7 +128,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "8",
     name: "Dr. David Kim",
-    avatar: "https://randomuser.me/api/portraits/men/4.jpg",
+    avatar: "/images/doctors/doctor-man-4.jpg",
     specialty: "Neurology",
     earliestAvailable: new Date("2025-08-23T15:30:00"),
     location: aucklandHospitals[7],
@@ -143,7 +143,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "9",
     name: "Dr. Lisa Anderson",
-    avatar: "https://randomuser.me/api/portraits/women/5.jpg",
+    avatar: "/images/doctors/doctor-woman-5.jpg",
     specialty: "Emergency Medicine",
     earliestAvailable: new Date("2025-08-16T20:00:00"),
     location: aucklandHospitals[8],
@@ -158,7 +158,7 @@ export const doctorsDatabase: Doctor[] = [
   {
     id: "10",
     name: "Dr. James Miller",
-    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+    avatar: "/images/doctors/doctor-man-5.jpg",
     specialty: "Family Medicine",
     earliestAvailable: new Date("2025-08-24T13:00:00"),
     location: aucklandHospitals[9],
