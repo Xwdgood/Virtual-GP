@@ -1,51 +1,195 @@
-<<<<<<< HEAD
+# Virtual GP - AI Medical Consultation Platform
 
-# Virtual-GP
+A mobile-first web application that provides an AI-powered medical consultation experience, built with Next.js and TypeScript.
 
-AI Hackathon Festival 2025
-==========================
+## 🌟 Features
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### 1. Mobile-Optimized Interface
+- iPhone-style frame layout (375x812px viewport)
+- Responsive design with mobile-first approach
+- Smooth animations and transitions
 
-## Getting Started
+### 2. Core Functionalities
 
-First, run the development server:
+#### Medical Consultation
+- Real-time chat interface with AI doctor
+- Camera integration (disabled in current version)
+- Voice input capability (UI only)
+- End consultation with summary generation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+#### Medical Records Management
+- Upload and manage medical reports
+- Timeline view of medical history
+- Edit and delete capabilities
+- Secure access with fingerprint authentication
+
+#### Appointment Booking
+- Search and filter doctors by:
+  - Gender
+  - Price range
+  - Distance
+  - Available time slots (morning/afternoon/all day)
+- Doctor profiles with detailed information
+- Appointment scheduling system
+- Medical records attachment feature
+
+### 3. Security Features
+- Fingerprint authentication for sensitive data
+- Session management
+- Secure data storage
+
+## 🛠️ Technical Stack
+
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **UI Components**: 
+  - Shadcn UI
+  - Tailwind CSS
+  - Custom components
+- **State Management**: React Hooks
+- **Authentication**: Local storage based (demo)
+- **Data Storage**: Local storage (simulated database)
+
+## 📦 Project Structure
+
+```
+virtual_gp/
+├── src/
+│   ├── app/                    # Next.js app router pages
+│   │   ├── chat/              # Chat consultation
+│   │   ├── dashboard/         # Main dashboard
+│   │   ├── medical-reports/   # Medical records
+│   │   ├── book-appointment/  # Doctor booking
+│   │   └── consultation-summary/ # Chat summaries
+│   ├── components/            # Reusable components
+│   │   ├── ui/               # UI components
+│   │   └── ...               # Other components
+│   └── lib/                   # Utilities and helpers
+├── public/                    # Static assets
+└── ...                       # Config files
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
+- Node.js 18+
+- pnpm (preferred package manager)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. Clone the repository
+\`\`\`bash
+git clone https://github.com/Xwdgood/Virtual-GP.git
+cd Virtual-GP
+\`\`\`
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies
+\`\`\`bash
+pnpm install
+\`\`\`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Start development server
+\`\`\`bash
+pnpm dev
+\`\`\`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Open [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+### Build for Production
+\`\`\`bash
+pnpm build
+pnpm start
+\`\`\`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎯 Key Features in Detail
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Chat Consultation
+- Structured medical questionnaire
+- Symptom analysis
+- Medical advice generation
+- Emergency detection
+- Consultation summary generation
 
->>>>>>> b4c0f3c (Initial commit from Create Next App)
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
+### Medical Records
+- Multiple record types support
+- Secure access control
+- Editable records
+- Timeline visualization
+- Export capabilities
+
+### Doctor Booking System
+- Advanced search and filter
+- Real-time availability
+- Location-based matching
+- Appointment confirmation
+- Medical record attachment
+
+## 👥 User Flow
+
+1. **Login/Dashboard**
+   - Access main features
+   - Quick action buttons
+   - Session management
+
+2. **Medical Consultation**
+   - Start chat
+   - Answer questions
+   - Receive medical advice
+   - End consultation
+   - View summary
+
+3. **Medical Records**
+   - Fingerprint authentication
+   - View/Edit records
+   - Upload new records
+   - Delete records
+
+4. **Book Appointment**
+   - Search doctors
+   - Apply filters
+   - View doctor profiles
+   - Select time slot
+   - Confirm booking
+
+## 🔒 Security Considerations
+
+- Fingerprint authentication for sensitive data
+- Session management
+- Secure data storage
+- Privacy protection
+- Data encryption (planned)
+
+## 🎨 UI/UX Features
+
+- Consistent color scheme
+- Intuitive navigation
+- Responsive design
+- Loading states
+- Error handling
+- Success feedback
+- Smooth transitions
+
+## 🔄 Future Improvements
+
+- [ ] Real doctor integration
+- [ ] Video consultation
+- [ ] Payment integration
+- [ ] Cloud data storage
+- [ ] Multi-language support
+- [ ] Push notifications
+- [ ] Emergency services integration
+- [ ] Health tracking features
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- Shadcn UI for beautiful components
+- All contributors and testers
+
+---
+
+Built with ❤️ for AI Hackathon Festival 2025
